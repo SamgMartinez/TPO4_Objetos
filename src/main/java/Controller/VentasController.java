@@ -1,6 +1,11 @@
 package Controller;
 
+import DTO.FuncionDTO;
+import DTO.VentaDto;
+import Modelo.Funcion;
 import Modelo.Venta;
+import Tipo.TipoGenero;
+import Tipo.TipoTarjeta;
 
 import java.util.*;
 
@@ -9,29 +14,33 @@ import java.util.*;
  * 
  */
 public class VentasController {
+    //
+    private List<Venta> ventas;
+    private static VentasController instancia;
+    private FuncionController funcionController =  FuncionController.getInstance();
+	
+    private VentasController(){
+        ventas = new ArrayList<Venta>();
+//        Venta venta = new Venta(1,new Date(), null, null);
+//        ventas.add(venta);
+    }
+
+    public static VentasController getInstance(){
+        if (instancia == null){
+            instancia = new VentasController();
+        }
+        return instancia;
+    }
+
+
 
     public List<Venta> getVentas() {
         return ventas;
     }
 
-    public void setVentas(List<Venta> ventas) {
-        this.ventas = ventas;
-    }
-
-    /**
-     * Default constructor
-     */
-    private List<Venta> ventas;
-
-    private FuncionController funcionController =  FuncionController.getInstance();
-	
-    public VentasController(){
-        ventas = new ArrayList<Venta>();
-        Venta venta = new Venta(1,new Date(), null, null);
-        ventas.add(venta);
-    }
-
-
+    //public void setVentas(List<Venta> ventas) {
+    //    this.ventas = ventas;
+    //}
     /**
      * @param funcionID 
      * @return
