@@ -1,5 +1,7 @@
 package Controller;
 
+import Modelo.Sucursal;
+
 import java.util.*;
 
 
@@ -8,17 +10,19 @@ import java.util.*;
  */
 public class SucursalController {
 
-    /**
-     * Default constructor
-     */
-	
+
+	private static SucursalController instancia;
 	private List<Sucursal> sucursal;
 		
-    public SucursalController() {
+    private SucursalController() {
     	sucursal = new ArrayList<Sucursal>();
     	sucursal.add(new Sucursal(1, "Barracas", "Av Montes de Oca 1100", null));
-
-    	
+    }
+    public static SucursalController getInstance(){
+        if(instancia==null){
+            instancia= new SucursalController();
+        }
+        return instancia;
     }
 
     /**
