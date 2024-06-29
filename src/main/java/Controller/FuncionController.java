@@ -1,3 +1,8 @@
+package Controller;
+
+import DTO.FuncionDTO;
+import Modelo.Funcion;
+import Tipo.TipoGenero;
 
 import java.util.*;
 
@@ -5,16 +10,23 @@ import java.util.*;
  * 
  */
 public class FuncionController {
-	
+    // Singlenton Implementado Sam //
 	private List<Funcion> funciones;
 
 	public static FuncionController instancia;
 	
-	FuncionController() {
+	private FuncionController() {
     	funciones = new ArrayList<Funcion>();
-    	funciones.add(new Funcion(new Date(), 1, "11:00", new ArrayList<Entrada>(), new Sala(0, null, 0),
-                new Pelicula(TipoGenero.Terror,"steven spielberg",120,"Tiburon",TipoProyeccion.DosD,new ArrayList<>(),null)));
+    	//funciones.add(new Funcion(new Date(), 1, "11:00", new ArrayList<Entrada>(), new Sala(0, null, 0),
+        //new Pelicula(TipoGenero.Terror,"steven spielberg",120,"Tiburon",TipoProyeccion.DosD,new ArrayList<>(),null)));
 
+    }
+
+    public static FuncionController getInstance(){
+        if (instancia == null){
+            instancia = new FuncionController();
+        }
+        return instancia;
     }
 
     /**
