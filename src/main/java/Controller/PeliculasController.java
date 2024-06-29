@@ -1,3 +1,8 @@
+package Controller;
+
+import Modelo.Pelicula;
+import Tipo.TipoGenero;
+
 import java.util.*;
 
 

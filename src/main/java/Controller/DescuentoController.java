@@ -1,3 +1,7 @@
+package Controller;
+
+import Modelo.CondicionesDescuento;
+
 import java.util.*;
 
 
@@ -5,18 +9,21 @@ import java.util.*;
  * 
  */
 public class DescuentoController {
-	
-	
+	// Singleton implementado Sam //
 	private static DescuentoController instancia;
 	
 	private List<CondicionesDescuento> Descuento;
 	
-    public DescuentoController() {
+    private DescuentoController() {
     	Descuento = new ArrayList<CondicionesDescuento>();
-    	CondicionesDescuento CondicionesDescuento = new CondicionesDescuento(new Date(), new Date(), 5, 50, TipoTarjeta.PAMI, new ArrayList<TarjetaDescuento>());
-    	Descuento.add(CondicionesDescuento);
-    	
     }
+
+	public static DescuentoController getInstance(){
+		if (instancia == null) {
+			instancia = new DescuentoController();
+		}
+		return instancia;
+	}
 
     /**
      * 

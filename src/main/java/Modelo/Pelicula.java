@@ -1,3 +1,8 @@
+package Modelo;
+
+import Tipo.TipoGenero;
+import Tipo.TipoProyeccion;
+
 import java.util.*;
 
 /**

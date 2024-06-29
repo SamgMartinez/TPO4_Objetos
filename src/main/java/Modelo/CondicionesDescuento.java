@@ -1,3 +1,7 @@
+package Modelo;
+
+import Tipo.TipoTarjeta;
+
 import java.util.*;
 
 /**
