@@ -33,35 +33,52 @@ public class PeliculasController {
         return instancia;
     }
     public void crearPelicula(PeliculaDTO pelicula){
-        if(pelicula.getTipoGenero() == "drama"){
-            Pelicula pelicu = new Pelicula(TipoGenero.Drama, pelicula.getDirector(),
-                    Integer.parseInt(pelicula.getDuracionEnMinutos()),
-                    pelicula.getNombrePelicula());
-            peliculas.add(pelicu);
+        TipoGenero tg;
+        if(pelicula.getTipoGenero() == "drama") {
+            tg = TipoGenero.Drama;
         } else if (pelicula.getTipoGenero()=="romance") {
-            Pelicula pelicu = new Pelicula(TipoGenero.Romance, pelicula.getDirector(),
-                    Integer.parseInt(pelicula.getDuracionEnMinutos()),
-                    pelicula.getNombrePelicula());
-            peliculas.add(pelicu);
+            tg = TipoGenero.Romance;
         } else if (pelicula.getTipoGenero()=="terror") {
-            Pelicula pelicu = new Pelicula(TipoGenero.Terror, pelicula.getDirector(),
-                    Integer.parseInt(pelicula.getDuracionEnMinutos()),
-                    pelicula.getNombrePelicula());
-            peliculas.add(pelicu);
-        }  else if (pelicula.getTipoGenero()=="biografica") {
-        Pelicula pelicu = new Pelicula(TipoGenero.Biografica, pelicula.getDirector(),
-                Integer.parseInt(pelicula.getDuracionEnMinutos()),
-                pelicula.getNombrePelicula());
-            peliculas.add(pelicu);
-    }else if (pelicula.getTipoGenero()=="suspenso") {
-            Pelicula pelicu = new Pelicula(TipoGenero.Suspenso, pelicula.getDirector(),
-                    Integer.parseInt(pelicula.getDuracionEnMinutos()),
-                    pelicula.getNombrePelicula());
-            peliculas.add(pelicu);
+            tg = TipoGenero.Terror;
         }
+        else if (pelicula.getTipoGenero()=="biografica") {
+            tg = TipoGenero.Biografica;
+        }
+        else{
+            tg = TipoGenero.Suspenso;
+        }
+        Pelicula pelicula1 = new Pelicula(tg,pelicula.getDirector(),
+                Integer.parseInt(pelicula.getDuracionEnMinutos()),pelicula.getNombrePelicula());
+        peliculas.add(pelicula1);
+
+    }
+    public List<PeliculaDTO> consultarPeliculas(String genero){
+        TipoGenero tg;
+        if(genero == "drama") {
+            tg = TipoGenero.Drama;
+        } else if (genero=="romance") {
+            tg = TipoGenero.Romance;
+        } else if (genero=="terror") {
+            tg = TipoGenero.Terror;
+        }
+        else if (genero=="biografica") {
+            tg = TipoGenero.Biografica;
+        }
+        else{
+            tg = TipoGenero.Suspenso;
+        }
+        List<PeliculaDTO> peliculasDto = new ArrayList<>();
+
+        for(Pelicula peli :peliculas){
+            if(peli.getGenero()==tg){
+                PeliculaDTO peliculaDTO = new PeliculaDTO(String.valueOf(peli.getGenero()),
+                        peli.getNombrePelicula(),String.valueOf(peli.getDuracionEnMinutos()),
+                        peli.getDirector());
+            peliculasDto.add(peliculaDTO);
+            }
+        }
+        return peliculasDto;
     }
 
-    //public List<Pelicula> getPeliculas(P) {
-      //  return peliculas;
-    //}
+
 }
