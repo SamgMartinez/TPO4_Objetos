@@ -23,8 +23,6 @@ public class PeliculasController {
     private PeliculasController() {
     	
     	peliculas= new ArrayList<Pelicula>();
-    	peliculas.add(new Pelicula(TipoGenero.Suspenso, "Pelicula1",180 , "Director X")); //, TipoProyeccion.DosD, //Arrays.asList("Actriz Principal", "Actor Secundario"),null));
-
     }
     public static PeliculasController getInstance(){
         if(instancia==null){
@@ -90,29 +88,31 @@ public class PeliculasController {
     }
 
     public void agregarDatosPrueba(){
-        crearPelicula(new PeliculaDTO(
-                "romance",
-                "Pelicula de Prueba Romance",
-                "120",
-                "Sam"
-        ));
-        crearPelicula(new PeliculaDTO(
-                "terror",
-                "Pelicula de Prueba terror",
-                "130",
-                "Sam"
-        ));
-        crearPelicula(new PeliculaDTO(
-                "suspenso",
-                "Pelicula de Prueba suspenso",
-                "110",
-                "Sam"
-        ));
-        crearPelicula(new PeliculaDTO(
-                "romance",
-                "Otra Pelicula de Prueba Romance",
-                "122",
-                "Sam"
-        ));
+        if (peliculas.isEmpty()) {
+            crearPelicula(new PeliculaDTO(
+                    "romance",
+                    "Pelicula de Prueba Romance",
+                    "120",
+                    "Sam"
+            ));
+            crearPelicula(new PeliculaDTO(
+                    "terror",
+                    "Pelicula de Prueba terror",
+                    "130",
+                    "Sam"
+            ));
+            crearPelicula(new PeliculaDTO(
+                    "suspenso",
+                    "Pelicula de Prueba suspenso",
+                    "110",
+                    "Sam"
+            ));
+            crearPelicula(new PeliculaDTO(
+                    "romance",
+                    "Otra Pelicula de Prueba Romance",
+                    "122",
+                    "Sam"
+            ));
+        }
     }
 }

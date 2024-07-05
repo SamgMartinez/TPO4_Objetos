@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 
 public class Menu extends JFrame implements ActionListener {
 private JMenuBar navbar;
-private JMenu crearPelicula, crearfuncion, consulPelicula;
-private JMenuItem pelDrama, pelRomance, pelTerror, pelBiografica, pelSuspenso;
+private JMenu crearPelicula, crearfuncion;
+private JMenuItem pelDrama, pelRomance, pelTerror, pelBiografica, pelSuspenso, consulPelicula;
 private JMenuItem funDrama, funRomance, funTerror, funBiografica, funSuspenso;
 
     public Menu(){
@@ -69,7 +69,7 @@ private JMenuItem funDrama, funRomance, funTerror, funBiografica, funSuspenso;
         crearfuncion.add(funBiografica);
         crearfuncion.add(funSuspenso);
 
-        consulPelicula = new JMenu("Consulta Peliculas");
+        consulPelicula = new JMenuItem("Consulta Peliculas");
         consulPelicula.addActionListener(this);
         navbar.add(consulPelicula);
 
@@ -96,6 +96,10 @@ private JMenuItem funDrama, funRomance, funTerror, funBiografica, funSuspenso;
         if (e.getSource() == pelTerror){
             CrearPelicula cp = new CrearPelicula("terror");
             cp.setVisible(true);
+        }
+        if (e.getSource() == consulPelicula){
+            ConsultarPeliculas conPel = new ConsultarPeliculas();
+            conPel.desplegar();
         }
     }
     public static void main(String[] args){
