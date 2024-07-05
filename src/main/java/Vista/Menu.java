@@ -15,6 +15,8 @@ private JMenuItem funDrama, funRomance, funTerror, funBiografica, funSuspenso;
         setSize(500,500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+
+
         //setLayout();
 
         // iniciar el menu bar y asociarlo al frame //
@@ -74,7 +76,26 @@ private JMenuItem funDrama, funRomance, funTerror, funBiografica, funSuspenso;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource() == pelDrama){
+            CrearPelicula cp = new CrearPelicula("drama");
+            cp.setVisible(true);
+        }
+        if (e.getSource() == pelBiografica){
+            CrearPelicula cp = new CrearPelicula("biografica");
+            cp.setVisible(true);
+        }
+        if (e.getSource() == pelRomance){
+            CrearPelicula cp = new CrearPelicula("romance");
+            cp.setVisible(true);
+        }
+        if (e.getSource() == pelSuspenso){
+            CrearPelicula cp = new CrearPelicula("suspenso");
+            cp.setVisible(true);
+        }
+        if (e.getSource() == pelTerror){
+            CrearPelicula cp = new CrearPelicula("terror");
+            cp.setVisible(true);
+        }
     }
     public static void main(String[] args){
         new Menu();
