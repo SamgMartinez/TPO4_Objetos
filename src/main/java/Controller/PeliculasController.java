@@ -80,5 +80,39 @@ public class PeliculasController {
         return peliculasDto;
     }
 
+    public Pelicula getPeliPorNombre (String nombre){
+        for (Pelicula peli : peliculas){
+                if (peli.getNombrePelicula() == nombre){
+                    return peli;
+            }
+        }
+        return null;
+    }
 
+    public void agregarDatosPrueba(){
+        crearPelicula(new PeliculaDTO(
+                "romance",
+                "Pelicula de Prueba Romance",
+                "120",
+                "Sam"
+        ));
+        crearPelicula(new PeliculaDTO(
+                "terror",
+                "Pelicula de Prueba terror",
+                "130",
+                "Sam"
+        ));
+        crearPelicula(new PeliculaDTO(
+                "suspenso",
+                "Pelicula de Prueba suspenso",
+                "110",
+                "Sam"
+        ));
+        crearPelicula(new PeliculaDTO(
+                "romance",
+                "Otra Pelicula de Prueba Romance",
+                "122",
+                "Sam"
+        ));
+    }
 }

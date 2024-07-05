@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class Menu extends JFrame implements ActionListener {
 private JMenuBar navbar;
-private JMenu crearPelicula, crearfuncion;
+private JMenu crearPelicula, crearfuncion, consulPelicula;
 private JMenuItem pelDrama, pelRomance, pelTerror, pelBiografica, pelSuspenso;
 private JMenuItem funDrama, funRomance, funTerror, funBiografica, funSuspenso;
 
@@ -67,8 +67,9 @@ private JMenuItem funDrama, funRomance, funTerror, funBiografica, funSuspenso;
         crearfuncion.add(funBiografica);
         crearfuncion.add(funSuspenso);
 
-
-
+        consulPelicula = new JMenu("Consulta Peliculas");
+        consulPelicula.addActionListener(this);
+        navbar.add(consulPelicula);
 
         setVisible(true);
     }
