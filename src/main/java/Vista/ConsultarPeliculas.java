@@ -51,7 +51,6 @@ public class ConsultarPeliculas extends JFrame implements ActionListener {
         panel.add(new JLabel("Elija el genero para ver las peliculas disponibles"));
         sPanel = new JScrollPane(panel);
         sPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        sPanel.setHorizontalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
         add(sPanel);
 

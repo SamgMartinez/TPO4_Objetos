@@ -7,6 +7,27 @@ import java.util.*;
  */
 public class Funcion {
 
+    public Pelicula getPelicula() {
+        return pelicula;
+    }
+    private Pelicula pelicula;
+    private int funcionID;
+    private String horario;
+    private Date fecha;
+    public List<Entrada> getEntradas() {
+        return entradas;
+    }
+    private List<Entrada> entradas;
+    private Sala sala;
+
+    public Funcion(Pelicula pelicula, int funcionID, String horario, Date fecha, Sala sala) {
+        this.pelicula = pelicula;
+        this.funcionID = funcionID;
+        this.horario = horario;
+        this.fecha = fecha;
+        this.sala = sala;
+    }
+
     /**
      * Default constructor
      */
@@ -20,42 +41,6 @@ public class Funcion {
     	this.pelicula = pelicula;
     	
     }
-
-    public Pelicula getPelicula() {
-        return pelicula;
-    }
-
-    /*
-    *
-    *
-    */
-    private Pelicula pelicula;
-
-    /**
-     * 
-     */
-    private int funcionID;
-
-    /**
-     * 
-     */
-    private String horario;
-
-    /**
-     * 
-     */
-    private Date fecha;
-
-    public List<Entrada> getEntradas() {
-        return entradas;
-    }
-
-    /**
-     * 
-     */
-    private List<Entrada> entradas;
-
-    private Sala sala;
 
 
 

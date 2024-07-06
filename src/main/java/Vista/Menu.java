@@ -7,7 +7,8 @@ import java.awt.event.ActionListener;
 public class Menu extends JFrame implements ActionListener {
 private JMenuBar navbar;
 private JMenu crearPelicula, crearfuncion;
-private JMenuItem pelDrama, pelRomance, pelTerror, pelBiografica, pelSuspenso, consulPelicula;
+private JMenuItem pelDrama, pelRomance, pelTerror, pelBiografica, pelSuspenso, consulPelicula,
+    pelMasRecaudada;
 private JMenuItem funDrama, funRomance, funTerror, funBiografica, funSuspenso;
 
     public Menu(){
@@ -73,8 +74,16 @@ private JMenuItem funDrama, funRomance, funTerror, funBiografica, funSuspenso;
         consulPelicula.addActionListener(this);
         navbar.add(consulPelicula);
 
+        JMenu reportes = new JMenu("Reportes");
+        navbar.add(reportes);
+        pelMasRecaudada = new JMenuItem("Pelicula con mayor recaudacion");
+        pelMasRecaudada.addActionListener(this);
+
         setVisible(true);
     }
+
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == pelDrama){
@@ -101,7 +110,23 @@ private JMenuItem funDrama, funRomance, funTerror, funBiografica, funSuspenso;
             ConsultarPeliculas conPel = new ConsultarPeliculas();
             conPel.desplegar();
         }
+        if (e.getSource() == funDrama){
+            CrearFuncion CF = new CrearFuncion("drama");
+        }
+        if (e.getSource() == funBiografica){
+            CrearFuncion CF = new CrearFuncion("biografica");
+        }
+        if (e.getSource() == funRomance){
+            CrearFuncion CF = new CrearFuncion("romance");
+        }
+        if (e.getSource() == funSuspenso){
+            CrearFuncion CF = new CrearFuncion("suspenso");
+        }
+        if (e.getSource() == funTerror){
+            CrearFuncion CF = new CrearFuncion("terror");
+        }
     }
+
     public static void main(String[] args){
         new Menu();
     }

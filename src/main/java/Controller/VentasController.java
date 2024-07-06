@@ -110,18 +110,11 @@ public class VentasController {
         for (Funcion funcion:funciones) {
             Venta venta = buscarVentaPorFuncion(funcion);
             if(Objects.isNull(venta)){
-                ventaDtos.add(modelVentaToDto(venta));
+                //ventaDtos.add(modelVentaToDto(venta));
             }
         }
         return ventaDtos;
     }
 
-    public VentaDto modelVentaToDto(Venta venta){
-        return new VentaDto(modelFuncionToDto(venta.getFuncion()));
-    }
-
-    public FuncionDTO modelFuncionToDto(Funcion funcion){
-        return new FuncionDTO(funcion);
-    }
 
 }

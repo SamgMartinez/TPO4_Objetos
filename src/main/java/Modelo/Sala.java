@@ -7,6 +7,15 @@ import java.util.*;
  */
 public class Sala {
 
+    private int salaID;
+    private String denominacion;
+    private int asientos;
+
+    public Sala(int salaID, int asientos) {
+        this.salaID = salaID;
+        this.asientos = asientos;
+    }
+
     /**
      * Default constructor
      */
@@ -15,23 +24,6 @@ public class Sala {
     	this.denominacion = denominacion;
     	this.salaID = salaID;
     }
-
-    /**
-     * 
-     */
-    private int salaID;
-
-    /**
-     * 
-     */
-    private String denominacion;
-
-    /**
-     * 
-     */
-    private int asientos;
-
-
 
     /**
      * @return

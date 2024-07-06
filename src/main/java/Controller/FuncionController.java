@@ -2,7 +2,14 @@ package Controller;
 
 import DTO.FuncionDTO;
 import Modelo.Funcion;
+import Modelo.Pelicula;
+import Modelo.Sala;
+import Modelo.Sucursal;
 import Tipo.TipoGenero;
+
+import java.text.ParseException;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 import java.util.*;
 
@@ -13,7 +20,9 @@ public class FuncionController {
     // Singlenton Implementado Sam //
 	private List<Funcion> funciones;
 
-	public static FuncionController instancia;
+	private static FuncionController instancia;
+    private PeliculasController PC = PeliculasController.getInstance();
+    private SucursalController SC = SucursalController.getInstance();
 	
 	private FuncionController() {
     	funciones = new ArrayList<Funcion>();
@@ -29,17 +38,6 @@ public class FuncionController {
         return instancia;
     }
 
-    /**
-     * Default constructor
-     */
-
-
-
-
-
-    /**
-     * 
-     */
     public void ABM() {
         // TODO implement here
     }
@@ -97,4 +95,22 @@ public class FuncionController {
         }
         return funciones;
     }
+
+
+    public void crearFuncion(FuncionDTO fun) throws ParseException {
+        if(fun != null){
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            Pelicula pelicula = PC.getPeliPorNombre(fun.getNombrePelicula());
+            Sala sala = SC.getSucursalPorID(fun.getSucursalID()).getSalaPorID(fun.getSalaID());
+            Date fecha = sdf.parse(fun.getDate());
+            funciones.add(new Funcion(pelicula,
+                    funciones.size() + 1,
+                    fun.getHorario(),
+                    fecha,
+                    sala
+                    ));
+        }
+    }
+
+
 }

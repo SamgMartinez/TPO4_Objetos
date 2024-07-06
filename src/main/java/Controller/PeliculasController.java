@@ -91,25 +91,25 @@ public class PeliculasController {
         if (peliculas.isEmpty()) {
             crearPelicula(new PeliculaDTO(
                     "romance",
-                    "Pelicula de Prueba Romance",
+                    "Pel prueba Romance",
                     "120",
                     "Sam"
             ));
             crearPelicula(new PeliculaDTO(
                     "terror",
-                    "Pelicula de Prueba terror",
+                    "Pel Prueba terror",
                     "130",
                     "Sam"
             ));
             crearPelicula(new PeliculaDTO(
                     "suspenso",
-                    "Pelicula de Prueba suspenso",
+                    "Pel Prueba suspenso",
                     "110",
                     "Sam"
             ));
             crearPelicula(new PeliculaDTO(
                     "romance",
-                    "Otra Pelicula de Prueba Romance",
+                    "Otra Prueba Romance",
                     "122",
                     "Sam"
             ));
