@@ -23,6 +23,9 @@ public class PeliculaDTO {
         this.nombrePelicula = nombrePelicula;
         this.actores = actores;
     }
+    public PeliculaDTO(String nombrePeli){
+        this.nombrePelicula= nombrePeli;
+    }
 
     public String getTipoGenero() {
         return tipoGenero;
