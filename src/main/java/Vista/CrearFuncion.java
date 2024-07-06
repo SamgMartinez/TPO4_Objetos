@@ -1,8 +1,11 @@
 package Vista;
 
+import Controller.FuncionController;
 import Controller.PeliculasController;
 import Controller.SucursalController;
+import DTO.FuncionDTO;
 import DTO.PeliculaDTO;
+import DTO.SalaDTO;
 import DTO.SucursalDTO;
 import Modelo.Sucursal;
 
@@ -10,13 +13,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.util.List;
 
 public class CrearFuncion extends JFrame {
     private PeliculasController PC = PeliculasController.getInstance();
     private SucursalController SC = SucursalController.getInstance();
+    private FuncionController FC = FuncionController.getInstance();
     private JPanel panel;
     private JScrollPane sPanel;
+    private JTextField horario, fecha;
 
     public CrearFuncion(String genero){
         PC.agregarDatosPrueba();
@@ -97,5 +103,62 @@ public class CrearFuncion extends JFrame {
         panel.removeAll();
         panel.setLayout(new GridLayout(0,3,20,30));
 
+        panel.add(new JLabel("Sala ID"));
+        panel.add(new JLabel("Asientos"));
+        panel.add(new JLabel(""));
+
+        for(SalaDTO salaDTO : sucursalDTO.getSalasID()){
+            panel.add(new JLabel(salaDTO.getSalaID()));
+            panel.add(new JLabel(salaDTO.getAsientos()));
+            JButton elegir = new JButton("Elegir");
+            elegir.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    crearfuncion(peli,sucursalDTO.getSucursalID(), salaDTO.getSalaID());
+                }
+            });
+            panel.add(elegir);
+        }
+
+
+        panel.revalidate();
+        panel.repaint();
+    }
+
+    public void crearfuncion(String peli, String sucursalID, String salaID){
+        setSize(400,400);
+        panel.removeAll();
+        panel.setLayout(new GridLayout(0,2,20,50));
+
+        panel.add(new JLabel("Ingrese el horario: "));
+        horario = new JTextField();
+        panel.add(horario);
+
+        panel.add(new JLabel("Ingrese la fecha de la funcion"));
+        fecha = new JTextField();
+        panel.add(fecha);
+
+        JButton guardar = new JButton("Guardar");
+        guardar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FuncionDTO FDTO = new FuncionDTO(
+                        horario.getText(),
+                        fecha.getText(),
+                        salaID,
+                        sucursalID,
+                        peli
+                );
+                try {
+                    FC.crearFuncion(FDTO);
+                } catch (ParseException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+        panel.add(guardar);
+
+        panel.revalidate();
+        panel.repaint();
     }
 }

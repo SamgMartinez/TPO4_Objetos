@@ -19,6 +19,14 @@ public class FuncionDTO {
         this.nombrePelicula = nombrePelicula;
     }
 
+    public FuncionDTO(String horario, String date, String salaID, String sucursalID, String nombrePelicula) {
+        this.horario = horario;
+        this.date = date;
+        this.salaID = salaID;
+        this.sucursalID = sucursalID;
+        this.nombrePelicula = nombrePelicula;
+    }
+
     public String getFuncionID() {
         return funcionID;
     }
