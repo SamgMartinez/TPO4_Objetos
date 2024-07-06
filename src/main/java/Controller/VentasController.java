@@ -6,6 +6,7 @@ import Modelo.Funcion;
 import Modelo.Venta;
 import Tipo.TipoGenero;
 import Tipo.TipoTarjeta;
+import DTO.PeliculaDTO;
 
 import java.util.*;
 
@@ -31,7 +32,17 @@ public class VentasController {
         }
         return instancia;
     }
+    public PeliculaDTO peliculaQueMasRecaudo(){
+        PeliculaDTO peliMasVendida= null;
+        float monto =0;
+        for(Venta ventaaux: ventas){
+            if(ventaaux.getTotalVenta()>monto){
+                 peliMasVendida = new PeliculaDTO(ventaaux.getNombrePeli());
+            }
+        }
 
+        return peliMasVendida;
+    }
 
 
     public List<Venta> getVentas() {

@@ -8,14 +8,25 @@ import java.util.*;
  * 
  */
 public class Venta {
+    private Float totalVenta;
+    private String nombrePeli;
+
+    public String getNombrePeli() {
+        return nombrePeli;
+    }
+
+    public void setNombrePeli(String nombrePeli) {
+        this.nombrePeli = nombrePeli;
+    }
 
     /**
      * Default constructor
      */
-    public Venta(int ventaID, Date fchVenta, List<Combo> combos, Funcion funcion) {
+    public Venta(int ventaID, Date fchVenta, List<Combo> combos, Funcion funcion,float total) {
     	this.combos = combos;
     	this.funcion = funcion;
     	this.fchVenta = fchVenta;
+        this.totalVenta= total;
     }
 
 
@@ -75,6 +86,14 @@ public class Venta {
     public int getPeliculaID() {
         // TODO implement here
         return 0;
+    }
+
+    public Float getTotalVenta() {
+        return totalVenta;
+    }
+
+    public void setTotalVenta(Float totalVenta) {
+        this.totalVenta = totalVenta;
     }
 
     /**
